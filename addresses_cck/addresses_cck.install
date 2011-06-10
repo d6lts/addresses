@@ -142,4 +142,34 @@ function addresses_cck_update_6000() {
   return $ret;
 }
 
+/**
+ * Updating country field definitions as there now might be another default value.
+ */
+function addresses_cck_update_6101(&$sandbox) {
+  $fields = content_fields();
+  module_load_include('crud.inc', 'content', 'includes/content');
+  $afields = addresses_addressesfieldapi('fields');
+  $country_field_schema = $afields['country'];
+
+  $ret = array();
+  $updated = FALSE;
+  foreach ($fields as $fname => $field) {
+    if ($field['type'] == 'addresses_cck') {
+      $field['columns']['country'] = $country_field_schema;
+      $re = content_field_instance_update($field, FALSE);
+      $updated = TRUE;
+      $ret[] = array(
+        'success' => !empty($re),
+        'query' => 'Addresses field updated: '. check_plain($field['field_name']),
+      );
+    }
+  }
+  if ($updated) {
+    // Clear caches and rebuild menu.
+    content_clear_type_cache(TRUE);
+    menu_rebuild();
+  }
+  return $ret;
+}
+
 // vim: ts=2 sw=2 et syntax=php

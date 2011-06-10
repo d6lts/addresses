@@ -56,7 +56,7 @@ function addresses_addressesfieldapi($op, $fields = array(), $values = array()) 
       'length' => 2,
       'title' => t('Country'),
       'description' => t('The ISO alpha 3 code of each country (its a 2-digit code).'),
-      'default' => variable_get('addresses_country_default', 'us'),
+      'default' => variable_get('addresses_country_default', ''),
       'display' => ADDRESSES_FIELD_SHOW,
       'theme' => array(
         'name' => t('The name of the country.'),
