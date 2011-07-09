@@ -705,7 +705,7 @@ function theme_addresses($afields) {
 
   // Return the address with adr microformatting and hcard and vcard formatting
   return '<div class="vcard"><dl class="adr">'. $address_format .'</dl></div>';
-  }
+}
 
 /**
  * Print a formatted is_primary field.
@@ -911,7 +911,7 @@ function theme_addresses_postal_code($afields, $format = 'plain') {
  * @ingroup themeable
  */
 function theme_addresses_address_singleline($afields) {
-  // Check if its a valied address
+  // Check if its a valid address
   if (empty($afields)) {
     return '';
   }
