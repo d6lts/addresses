@@ -306,6 +306,14 @@ function _addresses_province_ajax() {
   $passback = $_GET['passback'];
   // ISO-3166-2 code for the province or state to mark as selected.
   $province = $_GET['province'];
+  //JSON encoded list of field attributes;
+  $field_attributes = '';
+  $attributes = json_decode($_GET['attributes']);
+  if (is_object($attributes)) {
+    foreach ($attributes as $attr => $val) {
+      $field_attributes .= check_plain($attr) . "='" . check_plain($val) . "' ";
+    }
+  }
 
   // Check that required fields are supplied
   if (empty($field_id) || empty($field_name) || empty($passback)) {
@@ -332,10 +340,10 @@ function _addresses_province_ajax() {
   }
 
   // Generate province field HTML
-  $output .= '<label for="'. $field_id .'">'. t('State / Province: ') . '</label>';
-  $output .= '<select id="'. $field_id .'" name="'. $field_name
-    .'" class="addresses-province-field">'
-    . form_select_options($element) .'</select>';
+  $output .= '<label for="' . $field_id . '">' . t('State / Province: ') . '</label>';
+  $output .= '<select id="' . $field_id . '" name="' . $field_name
+    . '" class="addresses-province-field" ' . $field_attributes . '>'
+    . form_select_options($element) . '</select>';
 
   return drupal_json(array(
     'field' => $output,
