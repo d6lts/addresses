@@ -952,7 +952,7 @@ function theme_addresses_address_singleline($afields) {
     $output .= ', '. $afields['country'];
   }
 
-  return $output;
+  return check_plain($output);
 }
 
 // vim: ts=2 sw=2 et syntax=php
