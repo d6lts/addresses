@@ -148,7 +148,7 @@ function addresses_cck_update_6000() {
 function addresses_cck_update_6101(&$sandbox) {
   $fields = content_fields();
   module_load_include('crud.inc', 'content', 'includes/content');
-  module_load_include('addresses.module', 'addresses');
+  module_load_include('module', 'addresses');
   $afields = addresses_addressesfieldapi('fields');
   $country_field_schema = $afields['country'];
 
