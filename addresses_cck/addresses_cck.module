@@ -129,6 +129,7 @@ function addresses_cck_field_settings($op, $field) {
       $form['required'] = array(
         '#type'   => 'hidden',
         '#value'  => $field['required'],
+        '#tree'   => TRUE,
       );
       $form['#validate'][] = '_addresses_cck_field_validate';
       return $form;
