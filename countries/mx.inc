@@ -2,7 +2,7 @@
 
 /**
  * @file
- * "Mexico" specific data
+ * "México" specific data
  */
 
 /**
@@ -30,7 +30,7 @@ function addresses_province_list_mx() {
     'GRO' => t('Guerrero'),
     'HID' => t('Hidalgo'),
     'JAL' => t('Jalisco'),
-    'MEX' => t('Mexico'),
+    'MEX' => t('México'),
     'MIC' => t('Michoacan'),
     'MOR' => t('Morelos'),
     'NAY' => t('Nayarit'),
