@@ -17,8 +17,10 @@ Drupal.behaviors.addresses = function(context) {
   // Make province select list call
   function performProvinceAjax(countryElement) {
     // Country field's related province element
-    var provinceElement=$(countryElement).parent().siblings().children('.addresses-province-field');
-    var attributes={};
+    var provinceElement_id = $(countryElement).attr('id').replace('-country', '-province');
+    var provinceElement_wrapper_id = provinceElement_id + '-wrapper';
+    var provinceElement = $('#' + provinceElement_id);
+    var attributes = {};
     // Iterates over the element attributes to create an object of attributes to pass in the ajax call.
     if(provinceElement.length){
       $.each(provinceElement[0].attributes,function(index,attr){
@@ -37,12 +39,20 @@ Drupal.behaviors.addresses = function(context) {
         country:$(countryElement).val(),
         field_id:provinceElement.attr('id'),
         field_name:provinceElement.attr('name'),
-        passback:provinceElement.parent().attr('id'),
+        passback:provinceElement_wrapper_id,
         province:provinceElement.val(),
         language:Drupal.settings.addresses.language,
-        'attributes':JSON.stringify(attributes)
+        'attributes' : JSON_stringify(attributes)
       }
     });
+  }
+
+  // A Wrapper function to check for the JSON object before using it.
+  function JSON_stringify(my_object) {
+    if (window.JSON != undefined) {
+      return JSON.stringify(my_object);
+    }
+    return '';
   }
 
   // Populate province field
