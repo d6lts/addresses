@@ -25,7 +25,7 @@ function addresses_province_list_mx() {
     'CHH' => t('Chihuahua'),
     'COA' => t('Coahuila'),
     'COL' => t('Colima'),
-    'DIF' => t('Distrito Federal')
+    'DIF' => t('Distrito Federal'),
     'DUR' => t('Durango'),
     'GUA' => t('Guanajuato'),
     'GRO' => t('Guerrero'),
