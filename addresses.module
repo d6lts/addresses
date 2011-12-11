@@ -253,7 +253,12 @@ function addresses_elements_process($element, $edit, $form_state, $form) {
     }
     if ('textfield' == $extra[$ename]['#type'] && isset($settings[$ename . '_size'])) {
       $extra[$ename]['#size'] = $settings[$ename . '_size'];
-      $extra[$ename]['#attributes'] = array('class' => 'text');
+      if (!isset($extra[$ename]['#attributes']['class'])) {
+        $extra[$ename]['#attributes']['class'] = 'text';
+      }
+      else {
+        $extra[$ename]['#attributes']['class'] .= ' text';
+      }
     }
   }
 
