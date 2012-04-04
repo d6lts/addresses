@@ -80,7 +80,7 @@ function _addresses_addressesfieldapi_form($fields = array(), $values = array())
     );
     // If country field is displayed then use AJAX
     // See addresses.js
-    if ($form['country']) {
+    if (isset($form['country'])) {
       drupal_add_js(drupal_get_path('module', 'addresses') . '/addresses.js');
       // Due to varying field names we use the following classes for the JS
       // see http://drupal.org/node/244471#comment-2499288
@@ -162,22 +162,28 @@ function _addresses_addressesfieldapi_form($fields = array(), $values = array())
  *   Array. The current state of the form.
  */
 function _addresses_validate_top_countries($element, &$form_state) {
+  // account for multiple CCK addresses
+  $delta = 0;
   if (isset($element['#parents'][0])) {
     $field_name = $element['#parents'][0];
+    if (isset($element['#parents'][1]) && is_numeric($element['#parents'][1])) {
+      // $delta is the current address being validated
+      $delta = $element['#parents'][1];
+    }
   }
   else {
     $field_name = 'addresses';
   }
-  if (isset($form_state['values'][$field_name]['0']['country']) && $form_state['values'][$field_name]['0']['country'] == 'separator') {
+  if (isset($form_state['values'][$field_name][$delta]['country']) && $form_state['values'][$field_name][$delta]['country'] == 'separator') {
     // the user selected the separator!
-    $form_state['values'][$field_name]['0']['country'] = '';
+    $form_state['values'][$field_name][$delta]['country'] = '';
   }
   elseif ($form_state['values'][$field_name]['country'] == 'separator') {
     // the user selected the separator!
     $form_state['values'][$field_name]['country'] = '';
   }
-  elseif (isset($form_state['values'][$field_name]['0']['country']) && substr($form_state['values'][$field_name]['0']['country'], 0, 4) == 'top_') {
-    $form_state['values'][$field_name]['0']['country'] = substr($form_state['values'][$field_name]['0']['country'], 4);
+  elseif (isset($form_state['values'][$field_name][$delta]['country']) && substr($form_state['values'][$field_name][$delta]['country'], 0, 4) == 'top_') {
+    $form_state['values'][$field_name][$delta]['country'] = substr($form_state['values'][$field_name][$delta]['country'], 4);
   }
   elseif (substr($form_state['values'][$field_name]['country'], 0, 4) == 'top_') {
     $form_state['values'][$field_name]['country'] = substr($form_state['values'][$field_name]['country'], 4);
