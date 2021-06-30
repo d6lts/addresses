@@ -222,7 +222,8 @@ function _addresses_autocomplete($country, $string = '') {
     // partially with the given piece of text
     if (!empty($provinces)) {
       $counter = 5;
-      while (list($code, $name) = each($provinces)) {
+      foreach ($provinces as $province) {
+        list($code, $name) = $province;
         if (preg_match($string, drupal_strtolower($name))) {
           $matches[$code] = drupal_strtolower($name);
           --$counter;

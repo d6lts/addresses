@@ -540,7 +540,7 @@ function addresses_feeds_node_processor_targets_alter(&$targets, $content_type) 
  *   The value to assign to the CCK field.
  */
 function addresses_feeds_set_target($node, $target, $value) {
-  list($field_name, $sub_field) = split(':', $target);
+  list($field_name, $sub_field) = explode(':', $target);
 
   $field = (isset($node->$field_name) ? $node->$field_name : array());
   if (is_array($value)) {
