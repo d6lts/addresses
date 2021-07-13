@@ -11,9 +11,3 @@ core = "6.x"
 project = "addresses"
 datestamp = "1281658841"
 
-
-; Information added by Drupal 6 LTS vendors on 2021-07-12
-version = "6.x-1.13"
-core = "6.x"
-project = "addresses"
-datestamp = "1626136160"

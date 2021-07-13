@@ -3,9 +3,3 @@ description     = "Add phone and fax fields on addresses"
 dependencies[]  = addresses
 name            = "Addresses - Phone/Fax"
 package         = "Addresses"
-
-; Information added by Drupal 6 LTS vendors on 2021-07-12
-version = "6.x-1.13"
-core = "6.x"
-project = "addresses"
-datestamp = "1626136160"

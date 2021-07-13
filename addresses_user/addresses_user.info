@@ -3,9 +3,3 @@ description     = "Let your users add addresses to their profiles"
 dependencies[]  = addresses
 name            = "Addresses - Users"
 package         = "Addresses"
-
-; Information added by Drupal 6 LTS vendors on 2021-07-12
-version = "6.x-1.13"
-core = "6.x"
-project = "addresses"
-datestamp = "1626136160"
